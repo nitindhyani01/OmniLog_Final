@@ -1,0 +1,10 @@
+com\omnilog\controller\MediaServlet.class
+com\omnilog\util\DBConnection.class
+com\omnilog\util\PasswordUtil.class
+com\omnilog\dao\MediaDAO.class
+com\omnilog\model\Review.class
+com\omnilog\filter\AuthFilter.class
+com\omnilog\model\MediaItem.class
+com\omnilog\controller\AuthServlet.class
+com\omnilog\dao\UserDAO.class
+com\omnilog\model\User.class
