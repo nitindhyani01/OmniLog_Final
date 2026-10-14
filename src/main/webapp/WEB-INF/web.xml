@@ -6,7 +6,14 @@
          version="6.0">
 
     <display-name>OmniLog</display-name>
-
+    <servlet>
+    <servlet-name>ApiServlet</servlet-name>
+    <servlet-class>com.omnilog.controller.ApiServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ApiServlet</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+</servlet-mapping>
     <servlet>
         <servlet-name>AuthServlet</servlet-name>
         <servlet-class>com.omnilog.controller.AuthServlet</servlet-class>
@@ -37,7 +44,9 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-
+    <listener>
+       <listener-class>com.omnilog.util.DataSeeder</listener-class>
+    </listener>
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>

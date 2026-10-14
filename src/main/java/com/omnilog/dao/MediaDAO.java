@@ -559,4 +559,40 @@ private double safeDouble(Document d, String k, double def) {
         }
         return 42; // demo count
     }
+    
+    public List<MediaItem> recommendFor(String userId, int limit) {
+    List<Review> mine = getUserDiary(userId);
+    if (mine == null || mine.isEmpty()) return getAllMedia().stream().limit(limit).toList();
+
+    Set<String> ratedIds = new HashSet<>();
+    Set<String> likedTopics = new HashSet<>();
+    for (Review r : mine) {
+        ratedIds.add(r.getMediaId());
+        if (r.getRating() >= 4) {
+            MediaItem item = getMediaById(r.getMediaId());
+            if (item != null && item.getGenreOrTopic() != null) {
+                likedTopics.add(item.getGenreOrTopic());
+            }
+        }
+    }
+
+    // score each unrated item: +1 for each shared topic with a highly-rated item
+    List<MediaItem> candidates = new ArrayList<>();
+    for (MediaItem m : getAllMedia()) {
+        if (ratedIds.contains(m.getId())) continue;
+        int score = 0;
+        if (m.getGenreOrTopic() != null && likedTopics.contains(m.getGenreOrTopic())) score++;
+        if (score > 0) candidates.add(m);
+    }
+
+    // fall back to filling with anything unrated
+    if (candidates.size() < limit) {
+        for (MediaItem m : getAllMedia()) {
+            if (ratedIds.contains(m.getId()) && !candidates.contains(m)) continue;
+            if (!candidates.contains(m)) candidates.add(m);
+            if (candidates.size() >= limit) break;
+        }
+    }
+    return candidates.stream().limit(limit).toList();
+}
 }

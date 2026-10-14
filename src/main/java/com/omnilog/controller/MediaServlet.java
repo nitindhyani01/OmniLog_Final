@@ -71,6 +71,12 @@ public class MediaServlet extends HttpServlet {
                 req.setAttribute("sortBy", sort);
                 req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
                 break;
+
+                case "recommended":
+                req.setAttribute("mediaList", mediaDAO.recommendFor(userId, 12));
+                req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
+                break;
+                
             default:
                 req.setAttribute("mediaList", mediaDAO.getAllMedia());
                 req.getRequestDispatcher("dashboard.jsp").forward(req, resp);

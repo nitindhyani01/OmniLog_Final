@@ -1,3 +1,4 @@
+D:\OmniLog_Final\src\main\java\com\omnilog\controller\ApiServlet.java
 D:\OmniLog_Final\src\main\java\com\omnilog\controller\AuthServlet.java
 D:\OmniLog_Final\src\main\java\com\omnilog\controller\MediaServlet.java
 D:\OmniLog_Final\src\main\java\com\omnilog\controller\ReviewServlet.java
@@ -10,5 +11,7 @@ D:\OmniLog_Final\src\main\java\com\omnilog\model\MediaItem.java
 D:\OmniLog_Final\src\main\java\com\omnilog\model\Review.java
 D:\OmniLog_Final\src\main\java\com\omnilog\model\User.java
 D:\OmniLog_Final\src\main\java\com\omnilog\model\Watchlist.java
+D:\OmniLog_Final\src\main\java\com\omnilog\util\DataFetcher.java
+D:\OmniLog_Final\src\main\java\com\omnilog\util\DataSeeder.java
 D:\OmniLog_Final\src\main\java\com\omnilog\util\DBConnection.java
 D:\OmniLog_Final\src\main\java\com\omnilog\util\PasswordUtil.java

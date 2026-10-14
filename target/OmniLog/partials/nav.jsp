@@ -6,6 +6,7 @@
 <nav class="nav">
     <a href="media?action=dashboard" class="brand">OmniLog</a>
     <div class="links">
+        <a href="media?action=recommended">For You</a>
         <a href="media?action=dashboard">Browse</a>
         <a href="media?action=diary">Diary</a>
         <a href="media?action=watchlist">Watchlist</a>

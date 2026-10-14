@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 public class AuthFilter implements Filter {
     private static final Set<String> PUBLIC_PATHS = Set.of(
-        "/auth", "/login.jsp", "/register.jsp", "/css/"
+    "/auth", "/login.jsp", "/register.jsp", "/css/", "/api"
     );
 
     @Override

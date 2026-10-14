@@ -45,9 +45,12 @@
             <input type="hidden" name="itemId" value="<%= media.getId() %>">
             <label>Rating</label>
             <div class="stars">
-                <% for (int i = 1; i <= 5; i++) { %>
-                    <label><input type="radio" name="rating" value="<%= i %>" required> ★</label>
-                <% } %>
+            <% for (int i = 1; i <= 5; i++) { %>
+            <label>
+            <input type="radio" name="rating" value="<%= i %>" required>
+            <span>★</span>
+            </label>
+            <% } %>
             </div>
             <label>Status</label>
             <select name="status">

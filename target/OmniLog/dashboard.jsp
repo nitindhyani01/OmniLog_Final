@@ -59,7 +59,7 @@
                     <span class="badge"><%= type %></span>
                     <h3><%= title %></h3>
                     <p class="creator"><%= creator %></p>
-                    <p class="meta">★ <%= m.getAverageRating() %> · <%= m.getRatingCount() %> ratings</p>
+                    <p class="meta"><strong>★ <%= m.getAverageRating() %></strong> · <%= m.getReleaseYear() > 0 ? m.getReleaseYear() : "" %></p>
                 </div>
             </a>
         <%   }
