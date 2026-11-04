@@ -24,6 +24,9 @@
              class="avatar-large" alt="">
         <div>
             <h1><%= profileUser.getDisplayName() == null ? profileUser.getUsername() : profileUser.getDisplayName() %></h1>
+            <p style="margin-top: 10px;">
+    <a href="auth?action=editProfile" class="btn tiny">Edit Profile</a>
+</p>
             <p class="meta">@<%= profileUser.getUsername() %> · joined <%= profileUser.getJoinedDate() %></p>
             <p><%= profileUser.getBio() == null ? "" : profileUser.getBio() %></p>
             <p class="stats">

@@ -17,11 +17,18 @@ public class AuthServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        
         if ("logout".equals(action)) {
             req.getSession().invalidate();
             resp.sendRedirect("auth?action=login");
             return;
         }
+        
+        if ("editProfile".equals(action)) {
+            req.getRequestDispatcher("edit-profile.jsp").forward(req, resp);
+            return;
+        }
+        
         if ("login".equals(action) || action == null) {
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         } else if ("register".equals(action)) {
@@ -80,6 +87,19 @@ public class AuthServlet extends HttpServlet {
                 req.setAttribute("error", "Username or email already exists.");
                 req.getRequestDispatcher("register.jsp").forward(req, resp);
             }
+        } else if ("updateProfile".equals(action)) {
+            String userId = (String) req.getSession().getAttribute("userId");
+            String displayName = req.getParameter("displayName");
+            String bio = req.getParameter("bio");
+            String avatarUrl = req.getParameter("avatarUrl");
+            
+            userDAO.updateProfile(userId, displayName, bio, avatarUrl);
+            
+            // Update session so the navbar reflects changes immediately
+            req.getSession().setAttribute("userName", displayName);
+            req.getSession().setAttribute("avatar", avatarUrl);
+            
+            resp.sendRedirect("media?action=profile");
         }
     }
 }
