@@ -70,12 +70,13 @@ h3 { font-size: 15px; font-weight: 600; }
     z-index: 50;
     display: flex;
     align-items: center;
-    gap: 26px;
+    justify-content: space-between;
     padding: 0 24px;
     height: 56px;
     background: #14181c;
     border-bottom: 1px solid var(--line-soft);
 }
+
 
 .brand {
     font-weight: 900;
@@ -101,8 +102,7 @@ h3 { font-size: 15px; font-weight: 600; }
 .links {
     display: flex;
     align-items: center;
-    gap: 18px;
-    flex: 1;
+    gap: 22px;
 }
 
 .links a {
@@ -373,35 +373,49 @@ h3 { font-size: 15px; font-weight: 600; }
 
 /* ------------------------ Stars ------------------------ */
 
-.stars { display: flex; gap: 4px; margin: 4px 0 4px; }
+.log-form .stars {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 12px 0 20px;
+}
 
-.stars label {
+/* Force the labels to be inline, transparent, and override the generic .log-form label */
+.log-form .stars label {
+    display: inline-flex !important;
+    width: auto !important;
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+    font-size: 32px !important;
+    color: #444d56 !important; /* Dim gray for unselected */
     cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 4px;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    color: var(--text-mute);
-    font-size: 20px;
-    line-height: 1;
-    transition: all var(--t) var(--ease);
-    margin: 0;
-}
-.stars label:hover { border-color: var(--orange); }
-.stars input { display: none; }
-.stars input:checked + span {
-    color: var(--orange);
-    text-shadow: 0 0 10px rgba(255,128,0,.6);
-}
-.stars label:has(input:checked) {
-    background: rgba(255,128,0,.14);
-    border-color: var(--orange);
+    transition: transform 0.1s ease, color 0.1s ease;
 }
 
+/* Hover effect: Scales up the star */
+.log-form .stars label:hover {
+    transform: scale(1.15);
+}
+
+/* Hide the actual radio button */
+.log-form .stars input {
+    display: none;
+}
+
+/* When a star is selected, turn it orange */
+.log-form .stars input:checked + span {
+    color: #ff8000 !important;
+    text-shadow: 0 0 10px rgba(255, 128, 0, 0.4);
+}
+
+/* Hovering over a star turns it and all preceding stars orange */
+.log-form .stars:hover label span {
+    color: #ff8000 !important;
+}
+.log-form .stars label:hover ~ label span {
+    color: #444d56 !important;
+}
 /* ------------------------ Reviews ------------------------ */
 
 .review {
